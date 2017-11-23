@@ -108,7 +108,7 @@ class Truncate extends Twig_Extension
                         }
                     }
 
-                    $truncate .= mb_substr($line_matchings[2], 0, $left + $entities_length);
+                    $truncate .= mb_strcut($line_matchings[2], 0, $left + $entities_length);
 
                     // maximum lenght is reached, so get off the loop
                     break;
@@ -126,7 +126,7 @@ class Truncate extends Twig_Extension
             if (strlen($text) <= $length) {
                 return $text;
             } else {
-                $truncate = mb_substr($text, 0, $length - strlen($ending));
+                $truncate = mb_strcut($text, 0, $length - strlen($ending));
             }
         }
 
@@ -158,6 +158,7 @@ class Truncate extends Twig_Extension
         }
 
         // add the defined ending to the text
+        $truncate = preg_replace('/<p[^>]*>(.*)<\/p[^>]*>/i', '$1', $truncate);
         $truncate .= $ending;
 
         return $truncate;
