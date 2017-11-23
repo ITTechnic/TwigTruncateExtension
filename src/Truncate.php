@@ -141,7 +141,7 @@ class Truncate extends Twig_Extension
 
             if ($spacepos > 0) {
                 // ...and cut the text in this position
-                $truncate = mb_substr($truncate, 0, $spacepos);
+                $truncate = mb_strcut($truncate, 0, $spacepos);
             }
 
             if ($considerHtml){
